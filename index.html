@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Ivana Kuzmanović — Povratak sebi počinje ovde">
 <meta name="twitter:description" content="Ivana Kuzmanović — EET terapeut, mentor i autorka bestselera. Individualne EET sesije, radionice, Master Class i povlačenja u prirodu. Više od 15 godina vođenja EET programa i preko 300 polaznika.">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Ivana Kuzmanović", "jobTitle": "EET terapeut, mentor i književnica", "description": "EET terapeut, koučing mentor i autorka bestselera. Vodi programe Emocionalne i Energetske Transformacije više od 15 godina.", "email": "ivanakuzmanovicprijava@gmail.com", "telephone": "+38163377869", "knowsAbout": ["Emocionalna i energetska transformacija", "Koučing", "Mentoring", "Lični razvoj"], "sameAs": ["https://www.instagram.com/ivana__kuzmanovic/", "https://www.facebook.com/Ivana.Kuzmanovic.EET.terapeut.Pisac/", "https://www.youtube.com/@ivanakuzmanovic6264"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Ivana Kuzmanović", "jobTitle": "EET terapeut, mentor i književnica", "description": "EET terapeut, koučing mentor i autorka bestselera. Vodi programe Emocionalne i Energetske Transformacije više od 15 godina.", "email": "ivanamkuzmanovic@gmail.com", "telephone": "+38163377869", "knowsAbout": ["Emocionalna i energetska transformacija", "Koučing", "Mentoring", "Lični razvoj"], "sameAs": ["https://www.instagram.com/ivana__kuzmanovic/", "https://www.facebook.com/Ivana.Kuzmanovic.EET.terapeut.Pisac/", "https://www.youtube.com/@ivanakuzmanovic6264"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
@@ -1410,6 +1410,11 @@
 </style>
 </head>
 <body>
+<form name="prijava" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="prijava">
+  <input name="bot-field">
+  <input name="subject"><input name="name"><input name="email"><input name="phone"><input name="topic"><textarea name="message"></textarea>
+</form>
 
 <div class="mc-overlay" id="mcOverlay" role="dialog" aria-label="Najava Master Class-a">
   <div class="mc-box">
@@ -2334,36 +2339,27 @@
   applyLanguage(initialLang);
 
   const CONFIG = {
-    contactEmail: "ivanakuzmanovicprijava@gmail.com",
-    formsEmail: "ivanakuzmanovicprijava@gmail.com",
+    contactEmail: "ivanamkuzmanovic@gmail.com",
+    formsEmail: "ivanamkuzmanovic@gmail.com",
     instagramUrl: "https://www.instagram.com/ivana__kuzmanovic/",
     facebookUrl: "https://www.facebook.com/Ivana.Kuzmanovic.EET.terapeut.Pisac/",
-    // Web3Forms: postavi pravi Access Key sa web3forms.com da bi prijave išle direktno na mejl
-    // bez otvaranja mejl programa. Dok ovde stoji "YOUR_WEB3FORMS_ACCESS_KEY", forme automatski
-    // koriste mailto kao rezervni način.
-    web3formsKey: "YOUR_WEB3FORMS_ACCESS_KEY",
+    // Slanje preko Netlify Forms: podaci idu na Netlify, a Netlify ih prosleđuje na mejl
+    // (podešava se u Netlify panelu: Forms > Form notifications). Ako slanje ne uspe
+    // (npr. lokalno testiranje), vraća se na mailto kao rezervni način.
   };
 
-  // Šalje podatke direktno na mejl preko Web3Forms; ako ključ nije podešen ili slanje ne uspe,
-  // vraća se na mailto (otvara mejl program) kao rezervni način.
   function sendFormEmail(fields, subject, onSuccess, onFallback){
-    var hasKey = CONFIG.web3formsKey && CONFIG.web3formsKey.indexOf('YOUR_') !== 0;
-    if(!hasKey || typeof fetch !== 'function'){
-      onFallback();
-      return;
-    }
-    var payload = Object.assign({
-      access_key: CONFIG.web3formsKey,
-      subject: subject,
-      to: CONFIG.formsEmail,
-      from_name: 'Sajt Ivane Kuzmanović'
-    }, fields);
-    fetch('https://api.web3forms.com/submit', {
+    if(typeof fetch !== 'function'){ onFallback(); return; }
+    var data = Object.assign({ 'form-name': 'prijava', subject: subject, topic: '', name: '', email: '', phone: '', message: '' }, fields);
+    var body = Object.keys(data).map(function(k){
+      return encodeURIComponent(k) + '=' + encodeURIComponent(data[k] == null ? '' : data[k]);
+    }).join('&');
+    fetch('/', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(payload)
-    }).then(function(r){ return r.json(); }).then(function(json){
-      if(json && json.success){ onSuccess(); } else { onFallback(); }
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body
+    }).then(function(r){
+      if(r.ok){ onSuccess(); } else { onFallback(); }
     }).catch(function(){ onFallback(); });
   }
 

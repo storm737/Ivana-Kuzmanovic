@@ -1474,6 +1474,11 @@
 </style>
 </head>
 <body>
+<form name="prijava" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="prijava">
+  <input name="bot-field">
+  <input name="subject"><input name="name"><input name="email"><input name="phone"><input name="topic"><textarea name="message"></textarea>
+</form>
 
 <div class="mc-overlay" id="mcOverlay" role="dialog" aria-label="Najava Master Class-a">
   <div class="mc-box">
@@ -2084,36 +2089,27 @@
   }
 
   const CONFIG = {
-    contactEmail: "ivanakuzmanovicprijava@gmail.com",
-    formsEmail: "ivanakuzmanovicprijava@gmail.com",
+    contactEmail: "ivanamkuzmanovic@gmail.com",
+    formsEmail: "ivanamkuzmanovic@gmail.com",
     instagramUrl: "https://www.instagram.com/ivana__kuzmanovic/",
     facebookUrl: "https://www.facebook.com/Ivana.Kuzmanovic.EET.terapeut.Pisac/",
-    // Web3Forms: postavi pravi Access Key sa web3forms.com da bi prijave išle direktno na mejl
-    // bez otvaranja mejl programa. Dok ovde stoji "YOUR_WEB3FORMS_ACCESS_KEY", forme automatski
-    // koriste mailto kao rezervni način.
-    web3formsKey: "YOUR_WEB3FORMS_ACCESS_KEY",
+    // Slanje preko Netlify Forms: podaci idu na Netlify, a Netlify ih prosleđuje na mejl
+    // (podešava se u Netlify panelu: Forms > Form notifications). Ako slanje ne uspe
+    // (npr. lokalno testiranje), vraća se na mailto kao rezervni način.
   };
 
-  // Šalje podatke direktno na mejl preko Web3Forms; ako ključ nije podešen ili slanje ne uspe,
-  // vraća se na mailto (otvara mejl program) kao rezervni način.
   function sendFormEmail(fields, subject, onSuccess, onFallback){
-    var hasKey = CONFIG.web3formsKey && CONFIG.web3formsKey.indexOf('YOUR_') !== 0;
-    if(!hasKey || typeof fetch !== 'function'){
-      onFallback();
-      return;
-    }
-    var payload = Object.assign({
-      access_key: CONFIG.web3formsKey,
-      subject: subject,
-      to: CONFIG.formsEmail,
-      from_name: 'Sajt Ivane Kuzmanović'
-    }, fields);
-    fetch('https://api.web3forms.com/submit', {
+    if(typeof fetch !== 'function'){ onFallback(); return; }
+    var data = Object.assign({ 'form-name': 'prijava', subject: subject, topic: '', name: '', email: '', phone: '', message: '' }, fields);
+    var body = Object.keys(data).map(function(k){
+      return encodeURIComponent(k) + '=' + encodeURIComponent(data[k] == null ? '' : data[k]);
+    }).join('&');
+    fetch('/', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(payload)
-    }).then(function(r){ return r.json(); }).then(function(json){
-      if(json && json.success){ onSuccess(); } else { onFallback(); }
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body
+    }).then(function(r){
+      if(r.ok){ onSuccess(); } else { onFallback(); }
     }).catch(function(){ onFallback(); });
   }
   document.getElementById('footerInstagram').href = CONFIG.instagramUrl;
@@ -2211,7 +2207,7 @@
 
 <script>
 (function(){
-  var CONFIG_EMAIL = "ivanakuzmanovicprijava@gmail.com";
+  var CONFIG_EMAIL = "ivanamkuzmanovic@gmail.com";
   var subject = encodeURIComponent('Prijava — EET Master Class (17.10.2026. u 17:30h)');
   var body = encodeURIComponent('Zdravo Ivana,' + String.fromCharCode(10,10) +
     'Želim da se prijavim za EET Master Class koji se održava 17.10.2026. u 17:30h.' + String.fromCharCode(10,10) +
