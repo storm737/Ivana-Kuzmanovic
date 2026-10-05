@@ -1248,6 +1248,10 @@
   .modal-box form.hide{display:none;}
   form.hide{display:none;}
 
+  /* Srednje široki ekrani: kartica „Misao dana“ ide ispod ponuda, da ih ne prekriva */
+  @media (min-width:981px) and (max-width:1240px){
+    .hero .quote-box{position:relative;right:auto;bottom:auto;width:min(420px,calc(100% - 64px));margin:0 0 32px 32px;}
+  }
   @media (max-width:980px){
     .hero{display:flex;flex-direction:column;min-height:0;background:#FBF7F0;}
     .hero-art{position:relative;width:100%;height:340px;order:0;}
@@ -2300,7 +2304,39 @@
     { sr: "Razvoj podrazumeva promenu mišljenja. To je objašnjenje ovolike stagnacije.",
       en: "Growth means changing the way you think. That is the explanation for so much stagnation." },
     { sr: "Voleti sebe nije sebičnost — to je temelj iz kog jedino može izrasti istinska sposobnost da razumemo i volimo svet oko sebe.",
-      en: "Loving yourself isn't selfish — it's the foundation from which the true ability to understand and love the world around us can grow." }
+      en: "Loving yourself isn't selfish — it's the foundation from which the true ability to understand and love the world around us can grow." },
+    { sr: "Nije problem u tome što se ne razumemo. Problem je što se oko toga svađamo.",
+      en: "The problem isn't that we don't understand each other. The problem is that we argue about it." },
+    { sr: "Poverovali smo da smo mi ti koji upravljamo i izgubili ono malo vere i poniznosti.",
+      en: "We came to believe that we are the ones in charge, and lost the little faith and humility we had." },
+    { sr: "Mi možemo upravljati svojim mislima, emocijama i ponašanjima — i to ne uvek. Pomislili smo da time možemo upravljati životom.",
+      en: "We can manage our thoughts, emotions and behavior — and not always. We assumed that this meant we could manage life." },
+    { sr: "Od Junga naovamo ne bavimo se Senkom i sve je ređe pominjemo. Sa pojavom „najbolje verzije sebe“ kao targetom, uobrazili smo da ona zapravo i ne postoji.",
+      en: "Since Jung, we have stopped dealing with the Shadow and mention it ever more rarely. With the rise of the “best version of yourself” as a target, we convinced ourselves that it doesn't really exist." },
+    { sr: "A ko kaže da Isus već nije među nama? Da li ste sigurni da biste ga prepoznali?",
+      en: "Who says Jesus isn't already among us? Are you sure you would recognize him?" },
+    { sr: "Koliki li je bio taj Kantov moralni zakon u njemu kad se usudio da ga uporedi sa zvezdama? A mi mu, na reč, poverovali.",
+      en: "How vast must Kant's moral law have been within him, that he dared compare it to the stars? And we simply took his word for it." },
+    { sr: "Laž je uvek bila i biće. Ne samo zbog toga da bi mogla postojati istina. Već zato što iz njene suprotnosti nastaje i postaje sve veća što joj se više približava.",
+      en: "A lie has always existed and always will. Not merely so that truth can exist, but because it arises from its opposite and grows larger the closer it comes to it." },
+    { sr: "Namećemo jedni drugima svoje istine zaboravljajući da je baš sve samo stvar našeg ličnog osećaja.",
+      en: "We impose our truths on one another, forgetting that everything is simply a matter of our personal perception." },
+    { sr: "Verujem da je istina jedna. Za svakoga po jedna.",
+      en: "I believe truth is singular. One for each of us." },
+    { sr: "Najlakši način da se nekome zamerite jeste da mu nešto učinite.",
+      en: "The easiest way to fall out of someone's favor is to do something for them." },
+    { sr: "Dok se on iz sve snage trudi da je razume, ona se pita da li je normalan. I obrnuto.",
+      en: "While he strains with all his might to understand her, she wonders whether he is normal. And vice versa." },
+    { sr: "Unutrašnji mir moguć je tek kada umesto „ili – ili“ stavimo veznik „i“. Jer sve što postoji je i jedno i drugo.",
+      en: "Inner peace is possible only when we replace “either – or” with “and”. Because everything that exists is both one and the other." },
+    { sr: "Samoća bez osećaja usamljenosti je prostor kreativnosti i kontemplacije.",
+      en: "Solitude without loneliness is a space of creativity and contemplation." },
+    { sr: "Svi smo mi zavisnici, samo je pitanje od čega.",
+      en: "We are all addicts; the only question is to what." },
+    { sr: "Svaka je promena moguća, ali nije svaka promena poželjna.",
+      en: "Every change is possible, but not every change is desirable." },
+    { sr: "Kod nerazumevanja nema boljih i gorih, ispravnijih i pogrešnijih. Ima samo različitih dimenzija i uglova posmatranja. Svako ide tamo gde mu je mesto.",
+      en: "Where there is misunderstanding, there is no better or worse, right or wrong. There are only different dimensions and angles of seeing. Everyone goes where they belong." }
   ];
 
   function renderDailyQuote(lang){
