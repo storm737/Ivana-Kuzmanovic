@@ -1490,7 +1490,7 @@
     <button class="mc-close" id="mcClose" aria-label="Zatvori">&times;</button>
     <span class="mc-eyebrow" data-i18n="mc.overlay.eyebrow">UŽIVO — NOVI TERMIN</span>
     <h2 data-i18n="mc.overlay.title">EET Master Class</h2>
-    <p class="mc-overlay-date" data-i18n="mc.overlay.date">Subota, 7. novembar 2026. u 17:30h</p>
+    <p class="mc-overlay-date" data-i18n="mc.overlay.date">Subota, 7. novembar 2026. u 19h</p>
     <p class="mc-overlay-text" data-i18n="mc.overlay.text">Pridružite se Ivani uživo i saznajte kako EET metoda može da pokrene Vašu transformaciju.</p>
     <a href="#" class="btn btn-solid" id="mcOverlayBtn" data-i18n="mc.overlay.btn">Prijavite se za Master Class</a>
   </div>
@@ -1617,7 +1617,7 @@
           <a class="eetp-signup-link" href="eet-program.html" data-i18n="eetp.su.plan">Pogledajte detaljan plan i program →</a>
         </div>
         <div class="eetp-signup eetp-signup-mc">
-          <span class="eetp-soon eetp-soon-mc"><span class="status-dot"></span><span data-i18n="mc.card.badge">UŽIVO — 7.11.2026. U 17:30H</span></span>
+          <span class="eetp-soon eetp-soon-mc"><span class="status-dot"></span><span data-i18n="mc.card.badge">UŽIVO — 7.11.2026. U 19H</span></span>
           <h4 data-i18n="mc.card.title2">Prijavite se na Master Class</h4>
           <p data-i18n="mc.card.desc">Jednokratno online predavanje uživo sa Ivanom: uvod u EET metodu, pitanja i odgovori.</p>
           <button type="button" class="btn btn-solid eetp-signup-btn" id="openMcSignup" data-i18n="mc.card.btn">Prijavite se</button>
@@ -1795,7 +1795,7 @@
   <div class="modal-box">
     <button class="modal-close" id="closeMcSignup" aria-label="Zatvori">✕</button>
     <h3 data-i18n="mcModal.title">Prijava — EET Master Class</h3>
-    <p data-i18n="mcModal.desc">7.11.2026. u 17:30h. Ivana će Vam poslati link za pristup uživo predavanju.</p>
+    <p data-i18n="mcModal.desc">7.11.2026. u 19h. Ivana će Vam poslati link za pristup uživo predavanju.</p>
     <form id="mcSignupForm">
       <div class="form-field"><label for="mcsName" data-i18n="mcModal.name">Ime i prezime</label><input type="text" id="mcsName" required autocomplete="name"></div>
       <div class="form-field"><label for="mcsEmail" data-i18n="mcModal.email">Email</label><input type="email" id="mcsEmail" required autocomplete="email"></div>
@@ -1829,15 +1829,15 @@
       "hero.announce": "USKORO: EET PROGRAM POKREĆE NOVI CIKLUS — UTORAK, 1.12.2026.",
       "mc.overlay.eyebrow": "UŽIVO — NOVI TERMIN",
       "mc.overlay.title": "EET Master Class",
-      "mc.overlay.date": "Subota, 7. novembar 2026. u 17:30h",
+      "mc.overlay.date": "Subota, 7. novembar 2026. u 19h",
       "mc.overlay.text": "Pridružite se Ivani uživo i saznajte kako EET metoda može da pokrene Vašu transformaciju.",
       "mc.overlay.btn": "Prijavite se za Master Class",
-      "mc.card.badge": "UŽIVO — 7.11.2026. U 17:30H",
+      "mc.card.badge": "UŽIVO — 7.11.2026. U 19H",
       "mc.card.title2": "Prijavite se na Master Class",
       "mc.card.desc": "Jednokratno online predavanje uživo sa Ivanom: uvod u EET metodu, pitanja i odgovori.",
       "mc.card.btn": "Prijavite se",
       "mcModal.title": "Prijava — EET Master Class",
-      "mcModal.desc": "7.11.2026. u 17:30h. Ivana će Vam poslati link za pristup uživo predavanju.",
+      "mcModal.desc": "7.11.2026. u 19h. Ivana će Vam poslati link za pristup uživo predavanju.",
       "mcModal.name": "Ime i prezime",
       "mcModal.email": "Email",
       "mcModal.phone": "Broj telefona",
@@ -1956,15 +1956,15 @@
       "hero.announce": "COMING SOON: NEW EET PROGRAM CYCLE — TUESDAY, DEC 1, 2026.",
       "mc.overlay.eyebrow": "LIVE — NEW DATE",
       "mc.overlay.title": "EET Master Class",
-      "mc.overlay.date": "Saturday, November 7, 2026 at 5:30 PM",
+      "mc.overlay.date": "Saturday, November 7, 2026 at 7:00 PM",
       "mc.overlay.text": "Join Ivana live and discover how the EET method can spark your transformation.",
       "mc.overlay.btn": "Sign up for the Master Class",
-      "mc.card.badge": "LIVE — NOV 7, 2026, 5:30 PM",
+      "mc.card.badge": "LIVE — NOV 7, 2026, 7:00 PM",
       "mc.card.title2": "Sign up for the Master Class",
       "mc.card.desc": "A one-time live online session with Ivana: an introduction to the EET method, plus Q&A.",
       "mc.card.btn": "Sign up",
       "mcModal.title": "Sign up — EET Master Class",
-      "mcModal.desc": "November 7, 2026 at 5:30 PM. Ivana will send you the link to join the live session.",
+      "mcModal.desc": "November 7, 2026 at 7:00 PM. Ivana will send you the link to join the live session.",
       "mcModal.name": "Full name",
       "mcModal.email": "Email",
       "mcModal.phone": "Phone number",
@@ -2178,13 +2178,13 @@
   mcSignupForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const v = id => document.getElementById(id).value.trim();
-    const mcsSubject = 'Prijava — EET Master Class (7.11.2026. u 17:30h) — ' + v('mcsName');
+    const mcsSubject = 'Prijava — EET Master Class (7.11.2026. u 19h) — ' + v('mcsName');
     function showMcsSuccess(){
       mcSignupForm.classList.add('hide');
       mcSignupSuccess.classList.add('show');
     }
     function mcsFallback(){
-      const body = 'Prijava za EET Master Class — 7.11.2026. u 17:30h' + NL + NL +
+      const body = 'Prijava za EET Master Class — 7.11.2026. u 19h' + NL + NL +
         'Ime i prezime: ' + v('mcsName') + NL +
         'Email: ' + v('mcsEmail') + NL +
         'Telefon: ' + v('mcsPhone') + NL +
@@ -2217,9 +2217,9 @@
 <script>
 (function(){
   var CONFIG_EMAIL = "ivanamkuzmanovic@gmail.com";
-  var subject = encodeURIComponent('Prijava — EET Master Class (7.11.2026. u 17:30h)');
+  var subject = encodeURIComponent('Prijava — EET Master Class (7.11.2026. u 19h)');
   var body = encodeURIComponent('Zdravo Ivana,' + String.fromCharCode(10,10) +
-    'Želim da se prijavim za EET Master Class koji se održava 7.11.2026. u 17:30h.' + String.fromCharCode(10,10) +
+    'Želim da se prijavim za EET Master Class koji se održava 7.11.2026. u 19h.' + String.fromCharCode(10,10) +
     'Ime i prezime: ' + String.fromCharCode(10) +
     'Email: ' + String.fromCharCode(10) +
     'Telefon: ' + String.fromCharCode(10));
